@@ -1,0 +1,8 @@
+.vim
+.vscode
+__pycache__
+data
+outputs
+venv
+*.gv
+*.pdf
