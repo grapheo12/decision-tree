@@ -7,7 +7,7 @@ from dtree.tree import DecisionTreeNode
 
 MAX_POOL_SIZE = 10
 ENTROPY_PRECISION = 0.1
-MIN_BIN_SIZE = 5
+MIN_BIN_SIZE = 10
 MAX_ITER = 2
 
 
@@ -97,7 +97,7 @@ def listEntropyFactory(attr, X, y):
 
 def id3Categorical(X, y, attrs, idxList, idGen, height, maxHeight):
     unique_value_counts = y.loc[idxList].nunique()
-
+    print(unique_value_counts, end="\r")
     if unique_value_counts == 1:
         # Homogenous node
         node = DecisionTreeNode(idx=next(idGen), discriminator=None,
@@ -148,12 +148,15 @@ def id3Categorical(X, y, attrs, idxList, idGen, height, maxHeight):
                                                   idGen, height + 1,
                                                   maxHeight))
         else:
-            node.addChild(key=False,
-                          node=id3Categorical(X, y, attrs, req_idxLists[0],
-                                              idGen, height + 1, maxHeight))
-            node.addChild(key=True,
-                          node=id3Categorical(X, y, attrs, req_idxLists[1],
-                                              idGen, height + 1, maxHeight))
+            chnode1 = id3Categorical(X, y, attrs, req_idxLists[0],
+                                     idGen, height + 1, maxHeight)
+            chnode2 = id3Categorical(X, y, attrs, req_idxLists[1],
+                                     idGen, height + 1, maxHeight)
+            if chnode1 is not None and chnode2 is not None:
+                node.addChild(key=False, node=chnode1)
+                node.addChild(key=True, node=chnode2)
+            else:
+                node.decision = y.loc[idxList].value_counts().idxmax()
 
         node.majority = y.loc[idxList].value_counts().idxmax()
 
