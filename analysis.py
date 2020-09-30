@@ -15,7 +15,14 @@ def makeTrees(X_train, y_train, X_test, y_test, start, stop):
     for i in range(start, stop):
         print("MaxHeight =", i)
         clf = DecisionTreeClassifier(max_height=i)
-        clf.fit(X_train, y_train, attrs)
+        X_grow, y_grow, X_val, y_val = test_train_split(X_train, y_train, 0.8, random_state=random.randint(100, 1000))
+        clf.fit(X_grow, y_grow, attrs)
+
+        clf.plot(name="tree_" + str(i), storepath="outputs")
+
+        clf.prune(X_val, y_val)
+
+        clf.plot(name="tree_pruned_" + str(i), storepath="outputs")
 
         y_pred = clf.predict(X_train)
         train_accuracies[i] = accuracy(y_train, y_pred)
@@ -25,8 +32,8 @@ def makeTrees(X_train, y_train, X_test, y_test, start, stop):
         test_accuracies[i] = accuracy(y_test, y_pred)
         print("Test Accuracy:", test_accuracies[i])
 
-        # clf.save(name="tree_" + str(i), storepath="outputs")
-        # clf.plot(name="tree_" + str(i), storepath="outputs")
+        #clf.save(name="tree_" + str(i), storepath="outputs")
+        #clf.plot(name="tree_" + str(i), storepath="outputs")
     
     return train_accuracies, test_accuracies
 

@@ -40,6 +40,7 @@ def prepareDataFromCsv(fname):
     df = df.loc[1:, 2:]
 
     return df.astype(np.float32).rolling(window=BETA).mean().loc[BETA:BETA+10]
+    #return df.astype(np.float32).var()
 
 
 def extractLabel(fname):
@@ -65,6 +66,7 @@ if __name__ == "__main__":
         X['label'] = y
         X = X.rename(columns={i + 2: COLUMNS[i] for i in range(14)})
         data = data.append(X)
+        #data.loc[i] = X.tolist() + [y]
 
     print(data.columns)
 

@@ -4,6 +4,11 @@ import pickle
 from graphviz import Digraph
 import numpy as np
 from dtree.learner import id3Categorical
+from dtree.tree import DecisionTreeNode
+import random
+import copy
+from collections import OrderedDict
+from dtree.pruning import prune2
 
 MAX_HEIGHT = 100
 MAX_NODES = 1000000
@@ -22,9 +27,16 @@ class DecisionTreeClassifier:
     def fit(self, X, y, attrs):
         self.attrs = attrs
 
+        #X_train, y_train, X_val, y_val = test_train_split(X, y, 0.7, random_state=random.randint(100, 1000))
+
         self.tree = id3Categorical(X, y, attrs, y.index.tolist(),
                                    iter(range(MAX_NODES)),
                                    0, self.max_height)
+        #self.tree = prune(self.tree, X_val, y_val, 0.6, random_state=random.randint(100, 1000))
+        #self.tree = prune2(self.tree, self.tree, X_val, y_val)
+
+    def prune(self, X_val, y_val):
+    	self.tree = prune2(self.tree, self.tree, X_val, y_val)
 
     def _predict(self, x):
         tmp = self.tree
@@ -85,3 +97,4 @@ def test_train_split(X, y, training_ratio, random_state=0):
     y_test = y.loc[idx[math.floor(n * training_ratio):]]
 
     return X_train, y_train, X_test, y_test
+
