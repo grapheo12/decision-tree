@@ -2,7 +2,7 @@ from collections import OrderedDict
 import os
 import matplotlib.pyplot as plt
 import pandas as pd
-from dtree import DecisionTreeClassifier, accuracy, test_train_split
+from dtree import DecisionTreeClassifier, accuracy, test_train_split, confidence_interval
 import random
 
 OUTPUT_DIR = "outputs"
@@ -18,20 +18,23 @@ def makeTrees(X_train, y_train, X_test, y_test, start, stop):
         X_grow, y_grow, X_val, y_val = test_train_split(X_train, y_train, 0.8, random_state=random.randint(100, 1000))
         clf.fit(X_grow, y_grow, attrs)
 
-        clf.plot(name="tree_" + str(i), storepath="outputs")
+        #clf.plot(name="tree_" + str(i), storepath="outputs")
 
         clf.prune(X_val, y_val)
 
-        clf.plot(name="tree_pruned_" + str(i), storepath="outputs")
+        #clf.plot(name="tree_pruned_" + str(i), storepath="outputs")
 
         y_pred = clf.predict(X_train)
         train_accuracies[i] = accuracy(y_train, y_pred)
+        CI = confidence_interval(y_train, y_pred)
         print("Training Accuracy:", train_accuracies[i])
+        print("Confidence interval on training sample:", CI)
 
         y_pred = clf.predict(X_test)
         test_accuracies[i] = accuracy(y_test, y_pred)
+        CI = confidence_interval(y_test, y_pred)
         print("Test Accuracy:", test_accuracies[i])
-
+        print("Confidence interval on test sample:", CI)
         #clf.save(name="tree_" + str(i), storepath="outputs")
         #clf.plot(name="tree_" + str(i), storepath="outputs")
     
