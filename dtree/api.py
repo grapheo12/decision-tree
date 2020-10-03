@@ -4,18 +4,33 @@ import pickle
 from graphviz import Digraph
 import numpy as np
 from dtree.learner import id3Categorical
-from dtree.tree import DecisionTreeNode
-import random
-import copy
-from collections import OrderedDict
 from dtree.pruning import prune2
 
-MAX_HEIGHT = 100
+# Internal Hyperparameters
+MAX_HEIGHT = 100     # Infinitely high tree will cause recursion error
 MAX_NODES = 1000000
 
 
 class DecisionTreeClassifier:
+    """
+    Sklearn style api for the Decision tree
+    ---
+    Params:
+    X, y: Training data
+    attrs: List of 2-tuples (attrbiute name, "Categorical" | "Continuous")
+    X_val, y_val: Cross-Validation data
+
+    Methods:
+    __init__: Initialize with max_height
+    fit: Train the decision tree
+    prune: Prune the decision tree
+    predict: Perform predictions on test data
+    plot: Render a pdf representation of the tree and store it in storepath
+    with the given name
+    save: Save the model as a pickle object (non-functional)
+    """
     def __init__(self, max_height=MAX_HEIGHT):
+
         if max_height == -1:
             self.max_height = MAX_HEIGHT
         else:
@@ -27,16 +42,12 @@ class DecisionTreeClassifier:
     def fit(self, X, y, attrs):
         self.attrs = attrs
 
-        #X_train, y_train, X_val, y_val = test_train_split(X, y, 0.7, random_state=random.randint(100, 1000))
-
         self.tree = id3Categorical(X, y, attrs, y.index.tolist(),
                                    iter(range(MAX_NODES)),
                                    0, self.max_height)
-        #self.tree = prune(self.tree, X_val, y_val, 0.6, random_state=random.randint(100, 1000))
-        #self.tree = prune2(self.tree, self.tree, X_val, y_val)
 
     def prune(self, X_val, y_val):
-    	self.tree = prune2(self.tree, self.tree, X_val, y_val)
+        self.tree = prune2(self.tree, self.tree, X_val, y_val)
 
     def _predict(self, x):
         tmp = self.tree
@@ -74,6 +85,10 @@ class DecisionTreeClassifier:
 
 
 def accuracy(y_true, y_pred):
+    """
+    Utility function to calculate the fraction of
+    matches between true and predicted labels.
+    """
     values = (y_true == y_pred).value_counts()
     try:
         return values[True] / (values[True] + values[False])
@@ -86,6 +101,9 @@ def accuracy(y_true, y_pred):
 
 
 def test_train_split(X, y, training_ratio, random_state=0):
+    """
+    Utility function to split the dataset into two parts randomly.
+    """
     idx = X.index.to_numpy()
     np.random.seed(random_state)
 
@@ -98,11 +116,15 @@ def test_train_split(X, y, training_ratio, random_state=0):
 
     return X_train, y_train, X_test, y_test
 
+
 def confidence_interval(y_true, y_pred):
+    """
+    Utility function to calculate the confidence interval.
+    """
     n = y_true.size
-    r = (y_true==y_pred).value_counts()[False]
-    print("n:",n)
-    print("r:",r)
+    r = (y_true == y_pred).value_counts()[False]
+    print("n:", n)
+    print("r:", r)
     Es = r/n
     sd = math.sqrt(Es*(1-Es)/n)
     CI = 1.96*sd

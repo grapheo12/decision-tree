@@ -1,8 +1,6 @@
 import numpy as np
-import pandas as pd
-import copy
-from dtree.tree import DecisionTreeNode
 from collections import OrderedDict
+
 
 def accuracy(y_true, y_pred):
     values = (y_true == y_pred).value_counts()
@@ -29,6 +27,7 @@ def test_train_split(X, y, training_ratio, random_state=0):
 
     return X_train, y_train, X_test, y_test
 
+
 def _predict(x, tree):
     #tmp = self.tree
     tmp = tree
@@ -39,9 +38,11 @@ def _predict(x, tree):
         tmp = buff
     return tmp.decision
 
+
 def predict(X, tree):
     y = X.apply(_predict, axis=1, tree=tree)
     return y
+
 
 def cut(tree, node, type, X, y):
     if type is "temp":
@@ -64,6 +65,7 @@ def cut(tree, node, type, X, y):
         y_pred = predict(X, tree)
         acc = accuracy(y,y_pred)
         return acc
+
 
 def prune(tree, X, y, training_ratio, random_state):
     
