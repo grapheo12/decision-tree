@@ -98,3 +98,12 @@ def test_train_split(X, y, training_ratio, random_state=0):
 
     return X_train, y_train, X_test, y_test
 
+def confidence_interval(y_true, y_pred):
+    n = y_true.size
+    r = (y_true==y_pred).value_counts()[False]
+    print("n:",n)
+    print("r:",r)
+    Es = r/n
+    sd = math.sqrt(Es*(1-Es)/n)
+    CI = 1.96*sd
+    return CI
