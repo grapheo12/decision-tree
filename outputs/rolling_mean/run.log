@@ -1,0 +1,156 @@
+/home/grapheo12/Desktop/ml/assgn1/dtree/pruning.py:51: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if type is "temp":
+Reading data and splitting into training, validation and test sets.
+Part 1: Tree with full height
+Generating for training set: 0
+Generating for training set: 1
+Generating for training set: 2
+Generating for training set: 3
+Generating for training set: 4
+Generating for training set: 5
+Generating for training set: 6
+Generating for training set: 7
+Generating for training set: 8
+Generating for training set: 9
+Average training accuracy: 0.7561248999199359
+Max training accuracy: 0.7774219375500401
+Average test accuracy: 0.6853035143769968
+Max test accuracy: 0.7252396166134185
+Saving tree with best test accuracy
+Part 1 End
+Part 2: Best Depth Selection
+MaxHeight = 2
+n: 999
+r: 702
+Training Accuracy: 0.2972972972972973
+Confidence interval on training sample: 0.028343574505979994
+n: 313
+r: 228
+Test Accuracy: 0.2715654952076677
+Confidence interval on test sample: 0.049273844815266456
+MaxHeight = 3
+n: 999
+r: 642
+Training Accuracy: 0.35735735735735735
+Confidence interval on training sample: 0.02971730770206421
+n: 313
+r: 216
+Test Accuracy: 0.30990415335463256
+Confidence interval on test sample: 0.05123329734867502
+MaxHeight = 4
+n: 999
+r: 584
+Training Accuracy: 0.41541541541541543
+Confidence interval on training sample: 0.030558941770839235
+n: 313
+r: 205
+Test Accuracy: 0.3450479233226837
+Confidence interval on test sample: 0.052665762134271876
+MaxHeight = 5
+n: 999
+r: 496
+Training Accuracy: 0.5035035035035035
+Confidence interval on training sample: 0.031005066687555
+n: 313
+r: 177
+Test Accuracy: 0.43450479233226835
+Confidence interval on test sample: 0.05491558980833244
+MaxHeight = 6
+n: 999
+r: 418
+Training Accuracy: 0.5815815815815816
+Confidence interval on training sample: 0.030590321832269167
+n: 313
+r: 172
+Test Accuracy: 0.4504792332268371
+Confidence interval on test sample: 0.055120524927056824
+MaxHeight = 7
+n: 999
+r: 308
+Training Accuracy: 0.6916916916916916
+Confidence interval on training sample: 0.028636650619842934
+n: 313
+r: 120
+Test Accuracy: 0.6166134185303515
+Confidence interval on test sample: 0.05386527018275826
+MaxHeight = 8
+n: 999
+r: 245
+Training Accuracy: 0.7547547547547547
+Confidence interval on training sample: 0.02667943045426299
+n: 313
+r: 105
+Test Accuracy: 0.6645367412140575
+Confidence interval on test sample: 0.05230773104862157
+MaxHeight = 9
+n: 999
+r: 237
+Training Accuracy: 0.7627627627627628
+Confidence interval on training sample: 0.026379071054508017
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+MaxHeight = 10
+n: 999
+r: 235
+Training Accuracy: 0.7647647647647647
+Confidence interval on training sample: 0.026301980378381263
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+MaxHeight = 11
+n: 999
+r: 235
+Training Accuracy: 0.7647647647647647
+Confidence interval on training sample: 0.026301980378381263
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+MaxHeight = 12
+n: 999
+r: 235
+Training Accuracy: 0.7647647647647647
+Confidence interval on training sample: 0.026301980378381263
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+MaxHeight = 13
+n: 999
+r: 235
+Training Accuracy: 0.7647647647647647
+Confidence interval on training sample: 0.026301980378381263
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+MaxHeight = 14
+n: 999
+r: 235
+Training Accuracy: 0.7647647647647647
+Confidence interval on training sample: 0.026301980378381263
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+MaxHeight = 15
+n: 999
+r: 235
+Training Accuracy: 0.7647647647647647
+Confidence interval on training sample: 0.026301980378381263
+n: 313
+r: 100
+Test Accuracy: 0.6805111821086262
+Confidence interval on test sample: 0.05165702212422946
+Saving accuracy vs height plot
+Part 2 End
+Part 3: Pruning the best height tree
+Accuracy after pruning: 0.6741214057507987
+Print 3 End
+Part 4: Printing the Decision Tree
+Saving the tree as Final_tree.pdf
+Part 4 End
+

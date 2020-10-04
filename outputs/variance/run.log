@@ -1,0 +1,156 @@
+Reading data and splitting into training, validation and test sets.
+Part 1: Tree with full height
+Generating for training set: 0
+Generating for training set: 1
+Generating for training set: 2
+Generating for training set: 3
+Generating for training set: 4
+Generating for training set: 5
+Generating for training set: 6
+Generating for training set: 7
+Generating for training set: 8
+Generating for training set: 9
+True    113
+dtype: int64
+Average training accuracy: 0.9150442477876106
+Max training accuracy: 1.0
+Average test accuracy: 0.12413793103448276
+Max test accuracy: 0.2413793103448276
+Saving tree with best test accuracy
+Part 1 End
+Part 2: Best Depth Selection
+MaxHeight = 2
+n: 90
+r: 62
+Training Accuracy: 0.3111111111111111
+Confidence interval on training sample: 0.09564607828243314
+n: 29
+r: 26
+Test Accuracy: 0.10344827586206896
+Confidence interval on test sample: 0.11084251616249448
+MaxHeight = 3
+n: 90
+r: 57
+Training Accuracy: 0.36666666666666664
+Confidence interval on training sample: 0.09956041654799298
+n: 29
+r: 26
+Test Accuracy: 0.10344827586206896
+Confidence interval on test sample: 0.11084251616249448
+MaxHeight = 4
+n: 90
+r: 54
+Training Accuracy: 0.4
+Confidence interval on training sample: 0.10121396478088716
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 5
+n: 90
+r: 46
+Training Accuracy: 0.4888888888888889
+Confidence interval on training sample: 0.10327556064535208
+n: 29
+r: 26
+Test Accuracy: 0.10344827586206896
+Confidence interval on test sample: 0.11084251616249448
+MaxHeight = 6
+n: 90
+r: 23
+Training Accuracy: 0.7444444444444445
+Confidence interval on training sample: 0.09011428196153522
+n: 29
+r: 25
+Test Accuracy: 0.13793103448275862
+Confidence interval on test sample: 0.12550443545759368
+MaxHeight = 7
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 8
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 9
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 10
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 11
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 12
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 13
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 14
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+MaxHeight = 15
+n: 90
+r: 6
+Training Accuracy: 0.9333333333333333
+Confidence interval on training sample: 0.051535628332778874
+n: 29
+r: 23
+Test Accuracy: 0.20689655172413793
+Confidence interval on test sample: 0.14743432904500373
+Saving accuracy vs height plot
+Part 2 End
+Part 3: Pruning the best height tree
+Accuracy after pruning: 0.1724137931034483
+Print 3 End
+Part 4: Printing the Decision Tree
+Saving the tree as Final_tree.pdf
+Part 4 End
+
