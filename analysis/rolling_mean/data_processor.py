@@ -6,7 +6,7 @@ import pandas as pd
 import tqdm
 
 DATA_PATH = os.path.join("data", "csv")
-OUTPUT_PATH = os.path.join("outputs", "data_var.csv")
+OUTPUT_PATH = os.path.join("outputs", "rolling_mean", "data.csv")
 
 BETA = 20
 
@@ -39,7 +39,7 @@ def prepareDataFromCsv(fname):
     df = pd.read_csv(fname, header=None)
     df = df.loc[1:, 2:]
 
-    return df.astype(np.float32).std() ** 2
+    return df.astype(np.float32).rolling(window=BETA).mean().loc[BETA:BETA+10]
 
 
 def extractLabel(fname):
@@ -47,7 +47,8 @@ def extractLabel(fname):
     return name[-5:-2]
 
 
-if __name__ == "__main__":
+def runAll():
+    global OUTPUT_PATH, DATA_PATH, BETA
     if len(sys.argv) > 1:
         OUTPUT_PATH = sys.argv[1]
 
@@ -61,10 +62,9 @@ if __name__ == "__main__":
     print("Collecting data from:", DATA_PATH)
     for i, f in tqdm.tqdm(enumerate(filenames)):
         X = prepareDataFromCsv(os.path.join(DATA_PATH, f))
-        X = pd.DataFrame([X.tolist()], columns=COLUMNS[:-1])
         y = extractLabel(f)
         X['label'] = y
-        # X = X.rename(columns={i + 2: COLUMNS[i] for i in range(14)})
+        X = X.rename(columns={i + 2: COLUMNS[i] for i in range(14)})
         data = data.append(X)
 
     print(data.columns)
