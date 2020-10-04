@@ -8,19 +8,19 @@
 4. Create a virtual environment called `venv`. Run: `virtualenv venv`.
 5. Install Dependencies: `source venv/bin/activate && pip install -r requirements.txt`.
 6. Install the `dot` software. This is required by `python-graphviz` to render decision tree diagrams.
+7. To run benchmarks, install `sklearn` (not included in the dependencies)
+8. In case the pip install fails due to network reasons, install `pandas, numpy, matplotlib, tqdm, graphviz` packages separately.
 
 ## Running
 
-1. Run the `data_processor.py` to generate the target dataset from all the csv files.
-This data set will remain in `outputs/data.csv`.
-2. Run `analysis.py`. It will create a 80%-20% train-test split of the dataset.
-Then it will create and train decision trees of heights from 2 to 10 and give out the train and test accuracies.
-3. Final aggregated results of the run will be available in `outputs` folder.
+There are 2 modes of running, corresponding to the different modes of data aggregation, `variance` and `rolling_mean`.
+For more information on the modes, please see the [report](report.pdf).
 
-## Stuff to do
+1. First generate the aggregate dataset: `python3 run_data_processor.py mode`.
+2. Then run the analysis: `python3 run_analysis.py mode`.
+3. [Optional] Run the sklearn benchmarks for the dataset: `python3 run_benchmarks.py mode`.
 
-1. Make it work! There are a number of hyperparameters in `dtree/learner.py`. Tweak them to a working value.
-2. Debug the code. `dtree/learner.py` contains all the `id3` and related algorithms implemented.
-`dtree/tree.py` contains the data structure.
-3. Write the model post-pruning code.
+All the outputs will be available in `outputs/mode`.
+
+Here `mode` is one of `variance` and `rolling_mean`.
 

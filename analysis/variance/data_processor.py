@@ -49,11 +49,6 @@ def extractLabel(fname):
 
 def runAll():
     global DATA_PATH, DATA_PATH, BETA
-    if len(sys.argv) > 1:
-        OUTPUT_PATH = sys.argv[1]
-
-    if len(sys.argv) > 2:
-        DATA_PATH = sys.argv[2]
 
     filenames = getFileNames(DATA_PATH)
 
